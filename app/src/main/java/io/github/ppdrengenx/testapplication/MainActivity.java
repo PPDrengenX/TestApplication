@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 setContentView(R.layout.input_values_layout);
                 //Insert buttons in input_values_layout and read these numbers
                 //Possibly insert writable textfield and read inputted text when pressing enter,
-                //continuing to the next required value
+                //continuing to the next required value maybe
             }
         });
 
