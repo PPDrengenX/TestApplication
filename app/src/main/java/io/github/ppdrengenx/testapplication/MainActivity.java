@@ -4,7 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,13 +54,59 @@ public class MainActivity extends AppCompatActivity {
     public void Watt() {
         setContentView(R.layout.main_watt_layout);
         Button btn_uxi = (Button) findViewById(R.id.button_uxi);
+        float  i, u, p;
+
+        //Does not currently work,as it only opens Ampere
+        //Need to figure out a way to send value from onClick to parent method to calculate the value
         btn_uxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.input_values_layout);
-                //Insert buttons in input_values_layout and read these numbers
-                //Possibly insert writable textfield and read inputted text when pressing enter,
-                //continuing to the next required value maybe
+
+                //Volt
+                setContentView(R.layout.input_volt);
+                Button set_volt = (Button)findViewById(R.id.btn_volt);
+                set_volt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v)  {
+                        EditText edit;
+                        String volt = "";
+                        edit = (EditText) findViewById(R.id.volt_text);
+                        volt = edit.getText().toString();
+
+
+
+                        try {
+                            float fvolt = Float.parseFloat(volt);
+                        }catch (Exception e) {
+                            Toast.makeText(getApplicationContext(), "Exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();;
+                        }
+
+                        Toast.makeText(getApplicationContext(), volt, Toast.LENGTH_SHORT).show();;
+                    }
+                });
+
+                //Ampere
+                setContentView(R.layout.input_amp);
+                Button set_amp = (Button)findViewById(R.id.btn_amp);
+                set_amp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v)  {
+                        EditText edit;
+                        String amp = "";
+                        edit = (EditText) findViewById(R.id.amp_text);
+                        amp = edit.getText().toString();
+
+
+
+                        try {
+                            float famp = Float.parseFloat(amp);
+                        }catch (Exception e) {
+                            Toast.makeText(getApplicationContext(), "Exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();;
+                        }
+
+                        Toast.makeText(getApplicationContext(), amp, Toast.LENGTH_SHORT).show();;
+                    }
+                });
             }
         });
 
