@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.NumberFormat;
 import java.util.Locale;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,57 +57,19 @@ public class MainActivity extends AppCompatActivity {
         Button btn_uxi = (Button) findViewById(R.id.button_uxi);
         float  i, u, p;
 
+
         //Does not currently work,as it only opens Ampere
         //Need to figure out a way to send value from onClick to parent method to calculate the value
         btn_uxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //SetVolt();
+                CalcWatt1();
 
-                //Volt
-                setContentView(R.layout.input_volt);
-                Button set_volt = (Button)findViewById(R.id.btn_volt);
-                set_volt.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v)  {
-                        EditText edit;
-                        String volt = "";
-                        edit = (EditText) findViewById(R.id.volt_text);
-                        volt = edit.getText().toString();
+                /*
+                String Volt_String = Float.toString(Volt);*/
+                Toast.makeText(getApplicationContext(), "Input Entered", Toast.LENGTH_SHORT);
 
-
-
-                        try {
-                            float fvolt = Float.parseFloat(volt);
-                        }catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), "Exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();;
-                        }
-
-                        Toast.makeText(getApplicationContext(), volt, Toast.LENGTH_SHORT).show();;
-                    }
-                });
-
-                //Ampere
-                setContentView(R.layout.input_amp);
-                Button set_amp = (Button)findViewById(R.id.btn_amp);
-                set_amp.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v)  {
-                        EditText edit;
-                        String amp = "";
-                        edit = (EditText) findViewById(R.id.amp_text);
-                        amp = edit.getText().toString();
-
-
-
-                        try {
-                            float famp = Float.parseFloat(amp);
-                        }catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), "Exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();;
-                        }
-
-                        Toast.makeText(getApplicationContext(), amp, Toast.LENGTH_SHORT).show();;
-                    }
-                });
             }
         });
 
@@ -123,6 +86,59 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+    }
+
+
+
+    public void CalcWatt1() {
+        setContentView(R.layout.input_uxi_test);
+        Button Calc = (Button) findViewById(R.id.btn_volt);
+        Calc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText voltText = (EditText) findViewById(R.id.volt_text);
+                String volt = voltText.getText().toString();
+                Toast.makeText(getApplicationContext(), volt, Toast.LENGTH_SHORT);
+                EditText ampereText = (EditText) findViewById(R.id.ampere_text);
+                String ampere = ampereText.getText().toString();
+
+                try {
+                    float fvolt = Float.parseFloat(volt);
+                    float fampere = Float.parseFloat(ampere);
+                    float fWatt = (fvolt * fampere);
+
+                    String sWatt = String.format(Locale.US, "%.2f", fWatt);
+
+                    TextView result = (TextView) findViewById(R.id.watt_result);
+                    result.setText(sWatt + " Watt");
+
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Exception: " + e.getMessage(), Toast.LENGTH_SHORT);
+                }
+            }
+        }
+        );
+    }
+
+
+    public void SetVolt() {
+        setContentView(R.layout.input_volt);
+        Button set_volt = (Button) findViewById(R.id.btn_volt);
+        set_volt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText edit = (EditText) findViewById(R.id.volt_text);
+                String volt = edit.getText().toString();
+
+                try {
+                    float fvolt = Float.parseFloat(volt);
+                    String svolt = Float.toString(fvolt);
+                    Toast.makeText(getApplicationContext(), svolt, Toast.LENGTH_SHORT);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Exception: " + e.getMessage(), Toast.LENGTH_SHORT);
+                }
             }
         });
     }
