@@ -3,4 +3,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="       Vælg den formel
+hvor du har begge værdier"
+        android:gravity="center"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/button_squaredpdivr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="186dp"
+        android:text="sqrt(P / R)" />
+
+    <Button
+        android:id="@+id/button_pdivu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_squaredpdivr"
+        android:layout_alignStart="@+id/button_squaredpdivr"
+        android:layout_alignTop="@+id/button_squaredpdivr"
+        android:layout_marginTop="78dp"
+        android:text="P / U" />
+
+    <Button
+        android:id="@+id/button_udivr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_pdivu"
+        android:layout_alignStart="@+id/button_pdivu"
+        android:layout_below="@+id/button_pdivu"
+        android:layout_marginTop="36dp"
+        android:text="U / R" />
 </RelativeLayout>

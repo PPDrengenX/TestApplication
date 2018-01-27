@@ -12,6 +12,7 @@
         android:layout_marginTop="70dp"
         android:text="       Vælg den formel
 hvor du har begge værdier"
+        android:gravity="center"
         android:textSize="20dp"/>
 
     <Button

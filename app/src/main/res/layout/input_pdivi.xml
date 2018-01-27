@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/volt_text"
+        android:id="@+id/effekt_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
@@ -30,15 +30,15 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="Indtast Volt" />
+        android:text="Indtast Effekt" />
 
     <EditText
         android:id="@+id/ampere_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/volt_text"
-        android:layout_alignStart="@+id/volt_text"
-        android:layout_below="@+id/volt_text"
+        android:layout_alignLeft="@+id/effekt_text"
+        android:layout_alignStart="@+id/effekt_text"
+        android:layout_below="@+id/effekt_text"
         android:layout_marginTop="75dp"
         android:ems="10"
         android:inputType="numberDecimal" />
@@ -47,7 +47,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/volt_text"
+        android:layout_below="@+id/effekt_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:text="Indtast Ampere" />
@@ -62,7 +62,7 @@
         android:text="Resultat" />
 
     <TextView
-        android:id="@+id/watt_result"
+        android:id="@+id/volt_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

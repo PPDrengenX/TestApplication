@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="       Vælg den formel
+hvor du har begge værdier"
+        android:gravity="center"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/button_ixr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="186dp"
+        android:text="I * R" />
+
+    <Button
+        android:id="@+id/button_pdivi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_ixr"
+        android:layout_alignStart="@+id/button_ixr"
+        android:layout_alignTop="@+id/button_ixr"
+        android:layout_marginTop="78dp"
+        android:text="P / I" />
+
+    <Button
+        android:id="@+id/button_squaredpxr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_pdivi"
+        android:layout_alignStart="@+id/button_pdivi"
+        android:layout_below="@+id/button_pdivi"
+        android:layout_marginTop="36dp"
+        android:text="sqrt(P * R)" />
+</RelativeLayout>
