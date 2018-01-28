@@ -307,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
         btn_pdivi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //CalcAmpere2();
+                CalcAmpere2();
             }
         });
 
@@ -315,13 +315,9 @@ public class MainActivity extends AppCompatActivity {
         btn_squaredpxr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //CalcAmpere3();
+                CalcAmpere3();
             }
         });
-    }
-
-    public void Modstand() {
-        Toast.makeText(getApplicationContext(), "Modstand", Toast.LENGTH_SHORT).show();;
     }
 
     public void CalcAmpere1() {
@@ -353,6 +349,186 @@ public class MainActivity extends AppCompatActivity {
         }
         );
     }
+
+    public void CalcAmpere2() {
+        setContentView(R.layout.input_pdivu);
+        Button Calc = (Button) findViewById(R.id.btn_result);
+        Calc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText effektText = (EditText) findViewById(R.id.effekt_text);
+                String effekt = effektText.getText().toString();
+                EditText voltText = (EditText) findViewById(R.id.volt_text);
+                String volt = voltText.getText().toString();
+
+                try {
+                    float feffekt = Float.parseFloat(effekt);
+                    float fvolt = Float.parseFloat(volt);
+                    float fampere = (feffekt / fvolt);
+
+                    String sampere = String.format(Locale.US, "%.2f", fampere);
+
+                    TextView result = (TextView) findViewById(R.id.ampere_result);
+                    result.setText(sampere + " Ampere");
+
+                } catch (Exception e) {
+                    Toast exceptionToast = Toast.makeText(getApplicationContext(), "Exception: " + e.getMessage(), Toast.LENGTH_SHORT);
+                    exceptionToast.show();
+                }
+            }
+        }
+        );
+    }
+
+    public void CalcAmpere3() {
+        setContentView(R.layout.input_udivi);
+        Button Calc = (Button) findViewById(R.id.btn_result);
+        Calc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText voltText = (EditText) findViewById(R.id.volt_text);
+                String volt = voltText.getText().toString();
+                EditText modstandText = (EditText) findViewById(R.id.modstand_text);
+                String modstand = modstandText.getText().toString();
+
+                try {
+                    float fmodstand = Float.parseFloat(modstand);
+                    float fvolt = Float.parseFloat(volt);
+                    float fampere = (fvolt / fmodstand);
+
+                    String sampere = String.format(Locale.US, "%.2f", fampere);
+
+                    TextView result = (TextView) findViewById(R.id.ampere_result);
+                    result.setText(sampere + " Ampere");
+
+                } catch (Exception e) {
+                    Toast exceptionToast = Toast.makeText(getApplicationContext(), "Exception: " + e.getMessage(), Toast.LENGTH_SHORT);
+                    exceptionToast.show();
+                }
+            }
+        }
+        );
+    }
+
+
+    public void Modstand() {
+        setContentView(R.layout.main_modstand_layout);
+
+        Button btn_ixr = (Button) findViewById(R.id.button_udivi);
+        btn_ixr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CalcModstand1();
+            }
+        });
+
+        Button btn_pdivi = (Button) findViewById(R.id.button_usquareddivp);
+        btn_pdivi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CalcModstand2();
+            }
+        });
+
+        Button btn_squaredpxr = (Button) findViewById(R.id.button_pdivsquaredi);
+        btn_squaredpxr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CalcModstand3();
+            }
+        });
+    }
+
+    public void CalcModstand1() {
+        setContentView(R.layout.input_udivi);
+        Button Calc = (Button) findViewById(R.id.btn_result);
+        Calc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText voltText = (EditText) findViewById(R.id.volt_text);
+                String volt = voltText.getText().toString();
+                EditText ampereText = (EditText) findViewById(R.id.ampere_text);
+                String ampere = ampereText.getText().toString();
+
+                try {
+                    float fampere = Float.parseFloat(ampere);
+                    float fvolt = Float.parseFloat(volt);
+                    float fmodstand = (fvolt / fampere);
+
+                    String smodstand = String.format(Locale.US, "%.2f", fmodstand);
+
+                    TextView result = (TextView) findViewById(R.id.modstand_result);
+                    result.setText(smodstand + " Ohm");
+
+                } catch (Exception e) {
+                    Toast exceptionToast = Toast.makeText(getApplicationContext(), "Exception: " + e.getMessage(), Toast.LENGTH_SHORT);
+                    exceptionToast.show();
+                }
+            }
+        }
+        );
+    }
+
+    public void CalcModstand2() {
+        setContentView(R.layout.input_usquareddivp);
+        Button Calc = (Button) findViewById(R.id.btn_result);
+        Calc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText voltText = (EditText) findViewById(R.id.volt_text);
+                String volt = voltText.getText().toString();
+                EditText effektText = (EditText) findViewById(R.id.effekt_text);
+                String effekt = effektText.getText().toString();
+
+                try {
+                    float feffekt = Float.parseFloat(effekt);
+                    float fvolt = Float.parseFloat(volt);
+                    float fmodstand = ((fvolt * fvolt) / feffekt);
+
+                    String smodstand = String.format(Locale.US, "%.2f", fmodstand);
+
+                    TextView result = (TextView) findViewById(R.id.modstand_result);
+                    result.setText(smodstand + " Ohm");
+
+                } catch (Exception e) {
+                    Toast exceptionToast = Toast.makeText(getApplicationContext(), "Exception: " + e.getMessage(), Toast.LENGTH_SHORT);
+                    exceptionToast.show();
+                }
+            }
+        }
+        );
+    }
+
+    public void CalcModstand3() {
+        setContentView(R.layout.input_pdivisquared);
+        Button Calc = (Button) findViewById(R.id.btn_result);
+        Calc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText ampereText = (EditText) findViewById(R.id.ampere_text);
+                String ampere = ampereText.getText().toString();
+                EditText effektText = (EditText) findViewById(R.id.effekt_text);
+                String effekt = effektText.getText().toString();
+
+                try {
+                    float feffekt = Float.parseFloat(effekt);
+                    float fampere = Float.parseFloat(ampere);
+                    float fmodstand = (feffekt / (fampere * fampere));
+
+                    String smodstand = String.format(Locale.US, "%.2f", fmodstand);
+
+                    TextView result = (TextView) findViewById(R.id.modstand_result);
+                    result.setText(smodstand + " Ohm");
+
+                } catch (Exception e) {
+                    Toast exceptionToast = Toast.makeText(getApplicationContext(), "Exception: " + e.getMessage(), Toast.LENGTH_SHORT);
+                    exceptionToast.show();
+                }
+            }
+        }
+        );
+    }
+
 
     /**
      * A native method that is implemented by the 'native-lib' native library,
